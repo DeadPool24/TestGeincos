@@ -1,0 +1,55 @@
+﻿@{
+    if (ViewBag.flagOption == 1)
+    {
+        <div class="panel-heading">
+            <div class="col-md-6 text-right">
+                <div class="form-group form-group-sm">
+                    <input class="form-control small" placeholder="TEXTO A BUSCAR" id="txt-Valor" />
+                </div>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="btn-group btn-group-sm">
+                    <button class="btn btn-info" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
+                    <button class="btn btn-success" id="btnNuevo"><i class="fa fa-plus"></i> Nuevo</button>
+                </div>
+            </div>
+        </div>
+    }
+    else if (ViewBag.flagOption == 2)
+    {
+        <div class="panel panel-default panel-body">
+            <div class="col-md-4 text-right">
+                <div class="form-group form-group-sm">
+                    <input class="form-control small" placeholder="TEXTO A BUSCAR" id="txt-Valor2" />
+                </div>
+            </div>
+
+            <div class="col-md-8 text-right">
+                <div class="btn-group btn-group-sm">
+                    <button class="btn btn-info" id="btn-Buscar2"><i class="fa fa-search"></i> Buscar</button>
+                    <a class="btn btn-success" id="btnImprimir" target='blank'><i class="fa fa-print"></i> Excel</a>
+                </div>
+            </div>
+        </div>
+    }
+    else if (ViewBag.flagOption == 3)
+    {
+        <div class="panel panel-default panel-body">
+            <div class="col-md-4 text-right">
+                <div class="form-group form-group-sm">
+                    <input class="form-control small" placeholder="TEXTO A BUSCAR" id="txt-Valor2" />
+                </div>
+            </div>
+
+            <div class="col-md-8 text-right">
+                <div class="btn-group btn-group-sm">
+                    <button class="btn btn-warning" id="btn-Buscar3"><i class="fa fa-search"></i> Buscar</button>
+                    <a class="btn btn-info" id="btnWord" target='blank'><i class="fa fa-file-word-o"></i> Word</a>
+                    <a class="btn btn-success" id="btnExcel" target='blank'><i class="fa fa-file-excel-o"></i> Excel</a>
+                    <a class="btn btn-danger" id="btnPdf" target='blank'><i class="fa fa-file-pdf-o"></i> PDF</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+
