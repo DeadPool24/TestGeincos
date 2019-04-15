@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLayer;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace TestDeLaCruzChinga.Controllers
 {
@@ -99,6 +100,35 @@ namespace TestDeLaCruzChinga.Controllers
             else
             {
                 return Json(new { Codigo = 1, Mensaje = obj.Error });
+            }
+        }
+
+        public object DeleteAlumno(int Id)
+        {
+            BlAlumno obj = new BlAlumno();
+            obj.IdAlumno = Id;
+            int r = obj.DeleteAlumno();
+            if (r != 0)
+            {
+                return Json(new { Codigo = 0, Mensaje = "Alumno eliminado exitosamente", Id = r });
+            }
+            else
+            {
+                return Json(new { Codigo = 1, Mensaje = obj.Error });
+            }
+        }
+
+        public object ConsultarReniec(string Dni)
+        {
+            try
+            {
+                BlConsultaDniReniec obj = new BlConsultaDniReniec();
+                var datos = obj.ConsultaDNI(Dni);
+                return Json(new { Codigo = 0, Data = datos });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Codigo = 1, Mensaje = ex.Message });
             }
         }
 

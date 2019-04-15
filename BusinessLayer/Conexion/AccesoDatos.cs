@@ -34,8 +34,7 @@ namespace BusinessLayer.Conexion
         /// <summary>
         /// Obtiene o establece la cadena Completa utilizada para la conexion a la Base de datos 
         /// </summary>
-        //private static string ConnectionString = "Data Source=SQL5027;Initial Catalog=DB_A1339D_LATIN;Persist Security Info=True;User ID=DB_A1339D_LATIN_admin ;Password=entercomp2017;";
-        //private static string ConnectionString = "Data Source=sql5027.smarterasp.net;Initial Catalog=DB_A1339D_LATIN;Persist Security Info=True;User ID=DB_A1339D_LATIN_admin ;Password=entercomp2017;";
+       
         private static string ConnectionString = ConfigurationManager.ConnectionStrings["cn"].ToString();
 
         /// <summary>
@@ -745,6 +744,6 @@ namespace BusinessLayer.Conexion
 
         }
 
-
+        //DESARROLLADOR: JUAN CARLOS DE LA CRUZ CHINGA - 2018 - 2019
     }
 }
