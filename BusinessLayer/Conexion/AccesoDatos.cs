@@ -36,7 +36,7 @@ namespace BusinessLayer.Conexion
         /// </summary>
         //private static string ConnectionString = "Data Source=SQL5027;Initial Catalog=DB_A1339D_LATIN;Persist Security Info=True;User ID=DB_A1339D_LATIN_admin ;Password=entercomp2017;";
         //private static string ConnectionString = "Data Source=sql5027.smarterasp.net;Initial Catalog=DB_A1339D_LATIN;Persist Security Info=True;User ID=DB_A1339D_LATIN_admin ;Password=entercomp2017;";
-        private static string ConnectionString = ConfigurationManager.AppSettings["cn"].ToString();
+        private static string ConnectionString = ConfigurationManager.ConnectionStrings["cn"].ToString();
 
         /// <summary>
         /// Almacena el mensaje devuelto en caso exista algun error de conexión en la clase, de forma resumida

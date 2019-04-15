@@ -30,6 +30,11 @@ namespace BusinessLayer
             return new AccesoDatos().ExecuteQueryOuput("SpAddAlumno", IdAlumno, Nombres, ApellidoPat, ApellidoMat, Dni, Correo, Apoderado, DniApoderado, TelfonoEmergencia, Nivel, Seccion, Estado);
         }
 
+        public int UpdateAlumno()
+        {
+            return new AccesoDatos().ExecuteQuery("SpUpdateAlumno", IdAlumno, Nombres, ApellidoPat, ApellidoMat, Dni, Correo, Apoderado, DniApoderado, TelfonoEmergencia, Nivel, Seccion, Estado);
+        }
+
         public DataTable FillAlumno()
         {
             return new AccesoDatos().ExecuteQueryData("SpFillAlumno", IdAlumno, Estado);

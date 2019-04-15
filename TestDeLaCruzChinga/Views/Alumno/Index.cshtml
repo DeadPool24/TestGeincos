@@ -5,27 +5,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Kiak - Facturacion Electronica</title>
-    <script src="~/Scripts/Vistas/Cliente/Nuevo.js"></script>
-    <style>
-        .cssClientes {
-            border-left: 6px solid #1e88f3;
-            font-size: small;
-            height: 60px;
-            overflow-y: scroll;
-        }
-
-            .cssClientes:hover {
-                border-left: 6px solid #00ff21;
-            }
-
-        @@media only screen and (max-width: 600px) {
-            .cssClientes {
-                height: 120px;
-                font-size: xx-small;
-            }
-        }
-    </style>
+    <title>Alumnos</title>
+    <script src="~/Scripts/Vistas/Alumno/Index.js"></script>
 </head>
 <body>
     <div class="row">
@@ -37,18 +18,21 @@
             <div class="panel-body" style="height:445px; overflow-y:scroll;">
                 <span id="total-Alumnos"></span>
                 <div class="table-responsive">
-                    <table class="table-responsive table-bordered table-hover table-striped table-condensed" style="width:100%;">
+                    <table class="table-responsive table-bordered table-hover table-striped table-condensed" id="tablaAlumno" style="width:100%;">
                         <thead>
                             <tr>
-                                <th>Nombres y apellidos</th>
-                                <th>Dni</th>
-                                <th>Nivel</th>
-                                <th>Seccion</th>
-                                <th>Apoderado</th>
-                                <th>Correo</th>
-                                <th><i class="fa fa-pencil"></i></th>
+                                <th class="text-center">Nombres y apellidos</th>
+                                <th class="text-center">Dni</th>
+                                <th class="text-center">Nivel</th>
+                                <th class="text-center">Seccion</th>
+                                <th class="text-center">Apoderado</th>
+                                <th class="text-center">Correo</th>
+                                <th class="text-center">Opciones</th>
                             </tr>
                         </thead>
+                        <tbody id="body-Alumno">
+                            
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -64,10 +48,66 @@
                     <h5 id="titleModal"></h5>
                 </div>
                 <div class="panel-body">
-
+                    <div class="form-group-sm">
+                        <div class="col-md-3">
+                            <label>Dni:</label>
+                            <input class="form-control" id="text-Dni" />
+                        </div>
+                        <div class="col-md-2" style="padding-top:23px;">
+                            <button class="btn btn-success btn-sm">Reniec</button>
+                        </div>
+                        <div class="col-md-7">
+                            <label>Nombres:</label>
+                            <input class="hidden" id="text-Id" />
+                            <input class="form-control" id="text-Nombres" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Apellido paterno:</label>
+                            <input class="form-control" id="text-Apepat" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Apellido materno:</label>
+                            <input class="form-control" id="text-Apemat" />
+                        </div>
+                        <div class="col-md-12">
+                            <label>Correo Electronico:</label>
+                            <input class="form-control" id="text-Correo" />
+                        </div>
+                        <div class="col-md-3">
+                            <label>Dni Apoderado:</label>
+                            <input class="form-control" id="text-DniApo" />
+                        </div>
+                        <div class="col-md-2" style="padding-top:23px;">
+                            <button class="btn btn-success btn-sm">Reniec</button>
+                        </div>
+                        <div class="col-md-12">
+                            <label>Apoderado:</label>
+                            <input class="form-control" id="text-Apoderado" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Telefono Emergencia:</label>
+                            <input class="form-control" id="text-Telf" />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Nivel:</label>
+                            <select class="form-control" id="cmb-Nivel">
+                                <option value="I">Inicial</option>
+                                <option value="P">Primaria</option>
+                                <option value="S">Secundaria</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Seccion:</label>
+                            <select class="form-control" id="cmb-Seccion">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
-                    <button class="btn btn-success" onclick="AddCliente()"><i class="fa fa-save"></i> Guardar</button>
+                    <button class="btn btn-success" onclick="AgregarAlumno()"><i class="fa fa-save"></i> Guardar</button>
                     <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
                 </div>
             </div>

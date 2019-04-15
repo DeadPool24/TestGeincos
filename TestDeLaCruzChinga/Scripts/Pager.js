@@ -3,6 +3,49 @@
  *
  * Copyright 2019 Juan De la Cruz
  */
+function Tabla(nombre,cantidad) {
+    $("#" + nombre).fancyTable({
+        sortColumn: 0,
+        pagination: true,
+        perPage: cantidad,
+        globalSearch: false,
+        searchable: false,
+        sortable: false,
+        paginationClass: "btn btn-success"
+    });
+}
+function ShowLoader(op) {
+    if (op == 1)
+        $("#loading").modal('show');
+    else
+        $("#loading").modal('hide');
+}
+
+function MensajeOK(mensaje, titulo, opcion) {
+    if (opcion == "")
+        opcion = "Continuemos!";
+    if (titulo == "")
+        titulo = "Buen trabajo";
+    swal({
+        title: titulo,
+        text: mensaje,
+        icon: "success",
+        button: opcion
+    });
+}
+
+function MensajeError(mensaje, titulo, opcion) {
+    if (opcion == "")
+        opcion = "ok!";
+    if (titulo == "")
+        titulo = "Ocurrio un error";
+    swal({
+        title: titulo,
+        text: mensaje,
+        icon: "warning",
+        button: opcion,
+    });
+}
 (function ($) {
     $.fn.fancyTable = function (options) {
         var settings = $.extend({
