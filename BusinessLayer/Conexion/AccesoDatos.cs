@@ -147,7 +147,7 @@ namespace BusinessLayer.Conexion
         /// del Procedimiento Almacenado)  </param>
         public int ExecuteQueryOuput(string ProcedureName, params Object[] Parametros)
         {
-            int rpta;
+            int rpta = 0;
             try
             {
                 openConexion();
@@ -167,7 +167,9 @@ namespace BusinessLayer.Conexion
             }
             catch (Exception ex)
             {
-                throw;
+                rpta = 0;
+                MessageErrorConnection = ex.Message;
+                MessageErrorConnectionDetail = ex.ToString();
             }
 
             finally

@@ -13,7 +13,6 @@ namespace TestDeLaCruzChinga.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.flagOption = 1;
             return View();
         }
 
