@@ -70,6 +70,37 @@ namespace TestDeLaCruzChinga.Controllers
             }
         }
 
+        public object UpdateNotaAlumno(int idCurso, int idalumno, decimal nota)
+        {
+            BlCurso obj = new BlCurso();
+            obj.IdCurso = idCurso;
+            obj.Nota = nota;
+            int r = obj.UpdateNotaAlumno(idalumno);
+            if (r != 0)
+            {
+                return Json(new { Codigo = 0, Mensaje = "Nota actualizada exitosamente" });
+            }
+            else
+            {
+                return Json(new { Codigo = 1, obj.Error });
+            }
+        }
+
+        public object DeleteCursoAlumno(int idCurso, int idalumno)
+        {
+            BlCurso obj = new BlCurso();
+            obj.IdCurso = idCurso;
+            int r = obj.DeleteCursoAlumno(idalumno);
+            if (r != 0)
+            {
+                return Json(new { Codigo = 0, Mensaje = "Nota eliminada exitosamente" });
+            }
+            else
+            {
+                return Json(new { Codigo = 1, obj.Error });
+            }
+        }
+
         public object DeleteCurso(int id)
         {
             BlCurso obj = new BlCurso();

@@ -13,6 +13,7 @@ namespace BusinessLayer
         public BlCurso() { }
         public int IdCurso { get; set; }
         public string Descripcion { get; set; }
+        public decimal Nota { get; set; }
         public bool Estado { get; set; }
         public string Error { get { return AccesoDatos.MessageErrorConnection; } }
         public int AddCurso()
@@ -27,6 +28,14 @@ namespace BusinessLayer
         public int UpdateCurso()
         {
             return new AccesoDatos().ExecuteQuery("spUpdateCurso", IdCurso, Descripcion);
+        }
+        public int UpdateNotaAlumno(int idAlumno)
+        {
+            return new AccesoDatos().ExecuteQuery("SpUpdateNotaAlumno", idAlumno, IdCurso, Nota);
+        }
+        public int DeleteCursoAlumno(int idAlumno)
+        {
+            return new AccesoDatos().ExecuteQuery("SpDeleteCursoAlumno", idAlumno, IdCurso);
         }
         public int DeleteCurso()
         {

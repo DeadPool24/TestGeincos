@@ -91,13 +91,76 @@ function GetNotasPorCurso() {
                 $.each(a.Data, function (i, v) {
                     body += '<tr>';
                     body += '<td>' + v.Descripcion + '</td>';
-                    body += '<td><input class="form-control" type="number" value="' + v.Nota + '" data-idcurso="' + v.IdCurso + '" data-idalumno="' + v.IdAlumno + '" id="Nota-' + i + '" /></td>';
-                    body += '<td><i class="fa fa-close"></i></td>';
+                    body += '<td><input class="form-control" onblur="UpdateNota(' + v.IdCurso + ',' + v.IdAlumno + ',' + i + ')" type="number" value="' + v.Nota + '" data-idcurso="' + v.IdCurso + '" data-idalumno="' + v.IdAlumno + '" id="Nota-' + i + '" /></td>';
+                    body += '<td class="text-center"><i onclick="DeleteCursoAlumno(' + v.IdCurso + ',' + v.IdAlumno + ')" class="btn btn-danger fa fa-close"></i></td>';
                     body += '</tr>';
                 })
                 $("#body-notas").empty();
                 $("#body-notas").append(body);
                 ShowLoader(0);
+            }
+            else {
+                MensajeError(a.Mensaje, 'Ocurrio algo', '');
+                ShowLoader(0);
+            }
+        },
+        error: function (x) {
+            console.log(x);
+            ShowLoader(0);
+        },
+        complete: function () {
+            ShowLoader(0);
+        }
+    })
+}
+
+function UpdateNota(curso, alumno, i) {
+    var body = "";
+    var nota = $("#Nota-" + i).val()
+    ShowLoader(1);
+    $.ajax({
+        url: '/Curso/UpdateNotaAlumno',
+        dataType: 'json',
+        type: 'post',
+        data: {
+            idCurso: curso,
+            idalumno: alumno,
+            nota: nota
+        },
+        success: function (a) {
+            console.log(a);
+            if (a.Codigo == 0) {
+            }
+            else {
+                MensajeError(a.Mensaje, 'Ocurrio algo', '');
+                ShowLoader(0);
+            }
+        },
+        error: function (x) {
+            console.log(x);
+            ShowLoader(0);
+        },
+        complete: function () {
+            ShowLoader(0);
+        }
+    })
+}
+
+function DeleteCursoAlumno(curso, alumno) {
+    var body = "";
+    ShowLoader(1);
+    $.ajax({
+        url: '/Curso/DeleteCursoAlumno',
+        dataType: 'json',
+        type: 'post',
+        data: {
+            idCurso: curso,
+            idalumno: alumno
+        },
+        success: function (a) {
+            console.log(a);
+            if (a.Codigo == 0) {
+                GetNotasPorCurso();
             }
             else {
                 MensajeError(a.Mensaje, 'Ocurrio algo', '');
