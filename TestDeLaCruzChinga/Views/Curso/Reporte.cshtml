@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Asignaturas - Geincos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/Vistas/Curso/Reporte.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Reporte de Notas <i class="fa fa-bar-chart"></i>
+            </div>
+            <div class="panel-body" style="height:445px; overflow-y:scroll;">
+                <span id="total-Alumnos"></span>
+                <div class="table-responsive">
+                    <table class="table-responsive table-bordered table-hover table-striped table-condensed" id="tablaNotas" style="width:100%;">
+                        <thead id="headNotas">
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @Html.Partial("Spinner")
+</body>
+</html>

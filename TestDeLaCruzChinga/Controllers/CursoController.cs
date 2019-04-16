@@ -24,6 +24,11 @@ namespace TestDeLaCruzChinga.Controllers
             return View();
         }
 
+        public ActionResult Reporte()
+        {
+            return View();
+        }
+
         public object AddCurso(string Descripcion)
         {
             BlCurso obj = new BlCurso();
@@ -154,6 +159,51 @@ namespace TestDeLaCruzChinga.Controllers
                                  Nota = dr["Nota"]
                              }).ToList();
                 return Json(new { Codigo = 0, Data = datos });
+            }
+            else
+            {
+                return Json(new { Codigo = 1, Mensaje = obj.Error });
+            }
+        }
+
+        public object GetNotasGeneral()
+        {
+            BlCurso obj = new BlCurso();
+            DataTable dt = obj.GetNotasGeneral();
+            List<BlCurso> lista = new List<BlCurso>();
+            List<BlAlumno> listaAlumno = new List<BlAlumno>();
+            if (dt != null)
+            {
+                var datos = (from DataRow dr in dt.Rows
+                             select new
+                             {
+                                 //IdCurso = dr["IdCurso"],
+                                 //Descripcion = dr["Descripcion"],
+                                 IdAlumno = dr["IdAlumno"],
+                                 //Nota = dr["Nota"],
+                                 Alumno = dr["Nombres"].ToString() + " " + dr["ApellidoPat"].ToString() + " " + dr["ApellidoMat"].ToString()
+                             }).ToList().Distinct();
+
+                foreach (var item in datos)
+                {
+                    BlAlumno objA = new BlAlumno();
+                    lista = new List<BlCurso>();
+                    objA.Nombres = item.Alumno;
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        obj = new BlCurso();
+                        if (Convert.ToInt32(item.IdAlumno) == Convert.ToInt32(dr["IdAlumno"]))
+                        {
+                            obj.IdCurso = Convert.ToInt32(dr["IdCurso"]);
+                            obj.Descripcion = dr["Descripcion"].ToString();
+                            obj.Nota = Convert.ToDecimal(dr["Nota"]);
+                            lista.Add(obj);
+                        }
+                    }
+                    objA.Notas = lista;
+                    listaAlumno.Add(objA);
+                }
+                return Json(new { Codigo = 0, Data = listaAlumno });
             }
             else
             {

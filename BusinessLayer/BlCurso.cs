@@ -13,6 +13,7 @@ namespace BusinessLayer
         public BlCurso() { }
         public int IdCurso { get; set; }
         public string Descripcion { get; set; }
+        public string _Alumno { get; set; }
         public decimal Nota { get; set; }
         public bool Estado { get; set; }
         public string Error { get { return AccesoDatos.MessageErrorConnection; } }
@@ -44,6 +45,11 @@ namespace BusinessLayer
         public DataTable FillCurso()
         {
             return new AccesoDatos().ExecuteQueryData("SpFillCurso", IdCurso, Estado);
+        }
+
+        public DataTable GetNotasGeneral()
+        {
+            return new AccesoDatos().ExecuteQueryData("SpGetNotasGeneral");
         }
 
         public DataTable FillNotasPorAlumno(int idalumno)

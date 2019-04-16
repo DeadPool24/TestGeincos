@@ -23,6 +23,7 @@ namespace BusinessLayer
         public string Nivel { get; set; }
         public string Seccion { get; set; }
         public bool Estado { get; set; }
+        public List<BlCurso> Notas { get; set; }
         public string Error { get { return AccesoDatos.MessageErrorConnection; } }
 
         public int AddAlumno()
