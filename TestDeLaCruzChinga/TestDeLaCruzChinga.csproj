@@ -137,6 +137,7 @@
     <Content Include="Scripts\Pager.js" />
     <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Scripts\Vistas\Alumno\Index.js" />
+    <Content Include="Scripts\Vistas\Curso\Index.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

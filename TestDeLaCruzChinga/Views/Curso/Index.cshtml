@@ -5,6 +5,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/Vistas/Curso/Index.js"></script>
     <title>Cursos</title>
 </head>
 <body>
@@ -20,7 +21,8 @@
                     <table class="table-responsive table-bordered table-hover table-striped table-condensed" id="tablaCurso" style="width:100%;">
                         <thead>
                             <tr>
-                               
+                                <th>Curso</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="body-Curso"></tbody>
@@ -40,11 +42,15 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group-sm">
-                       
+                        <div class="col-md-12">
+                            <label>Curso:</label>
+                            <input class="hidden" id="text-Id" />
+                            <input class="form-control" id="text-Curso" />
+                        </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <button class="btn btn-success" onclick=""><i class="fa fa-save"></i> Guardar</button>
+                    <button class="btn btn-success" onclick="AgregarCurso()"><i class="fa fa-save"></i> Guardar</button>
                     <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
                 </div>
             </div>

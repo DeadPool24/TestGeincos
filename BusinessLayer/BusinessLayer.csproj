@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BlAlumno.cs" />
     <Compile Include="BlConsultaDniReniec.cs" />
+    <Compile Include="BlCurso.cs" />
     <Compile Include="Conexion\AccesoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
