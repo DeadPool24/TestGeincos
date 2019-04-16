@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Asignaturas - Geincos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/Vistas/Curso/Asignaturas.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Asignaturas <i class="fa fa-bar-chart"></i>
+            </div>
+            <div class="panel-body" style="height:445px; overflow-y:scroll;">
+                <span id="total-Alumnos"></span>
+                <div class="table-responsive">
+                    <table class="table-responsive table-bordered table-hover table-striped table-condensed" id="tablaCurso" style="width:100%;">
+                        <thead id="body-Curso">
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" role="dialog" id="md-Alumnos" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h5 id="titleModal"></h5>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table-responsive table-condensed table-hover table-responsive table-striped" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Nota</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body-notas"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Salir</button>
+                    <button class="btn btn-success" onclick="getCursos()"><i class="fa fa-plus"></i> Agregar Curso</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" role="dialog" id="md-Cursos" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button class="close" data-dismiss="modal">&times;</button>
+                    <h5 id="titleModal">Agregar cursos</h5>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <input class="hidden" id="id-Pos" />
+                        <input class="hidden" id="id-Alumno" />
+                        <input class="hidden" id="id-Curso" />
+                        <div class="table-responsive">
+                            <table class="table-responsive table-condensed table-hover table-responsive table-striped" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Curso</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="body-Cursos">
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("Spinner")
+</body>
+</html>

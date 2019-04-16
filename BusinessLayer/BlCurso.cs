@@ -19,6 +19,11 @@ namespace BusinessLayer
         {
             return new AccesoDatos().ExecuteQueryOuput("SpAddCurso", IdCurso, Descripcion);
         }
+
+        public int AddCursoAlumno(int idAlumno)
+        {
+            return new AccesoDatos().ExecuteQueryOuput("SpAddCursoAlumno", IdCurso, idAlumno);
+        }
         public int UpdateCurso()
         {
             return new AccesoDatos().ExecuteQuery("spUpdateCurso", IdCurso, Descripcion);
@@ -30,6 +35,11 @@ namespace BusinessLayer
         public DataTable FillCurso()
         {
             return new AccesoDatos().ExecuteQueryData("SpFillCurso", IdCurso, Estado);
+        }
+
+        public DataTable FillNotasPorAlumno(int idalumno)
+        {
+            return new AccesoDatos().ExecuteQueryData("SpFillNotasPorAlumno", idalumno);
         }
     }
 }

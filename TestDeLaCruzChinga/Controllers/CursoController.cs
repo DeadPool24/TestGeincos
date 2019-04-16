@@ -19,6 +19,11 @@ namespace TestDeLaCruzChinga.Controllers
             return View();
         }
 
+        public ActionResult Asignaturas()
+        {
+            return View();
+        }
+
         public object AddCurso(string Descripcion)
         {
             BlCurso obj = new BlCurso();
@@ -31,6 +36,21 @@ namespace TestDeLaCruzChinga.Controllers
             else
             {
                 return Json(new { Codigo = 1, obj.Error, Id = r });
+            }
+        }
+
+        public object AddCursoAlumno(int idCurso, int idAlumno)
+        {
+            BlCurso obj = new BlCurso();
+            obj.IdCurso = idCurso;
+            int r = obj.AddCursoAlumno(idAlumno);
+            if (r != 0)
+            {
+                return Json(new { Codigo = 0, Mensaje = "Curso registrado exitosamente", Id = r });
+            }
+            else
+            {
+                return Json(new { Codigo = 1, Mensaje = obj.Error });
             }
         }
 
@@ -79,6 +99,28 @@ namespace TestDeLaCruzChinga.Controllers
                                  IdCurso = dr["IdCurso"],
                                  Descripcion = dr["Descripcion"],
                                  Estado = dr["Estado"]
+                             }).ToList();
+                return Json(new { Codigo = 0, Data = datos });
+            }
+            else
+            {
+                return Json(new { Codigo = 1, Mensaje = obj.Error });
+            }
+        }
+
+        public object FillNotasPorAlumno(int idalumno)
+        {
+            BlCurso obj = new BlCurso();
+            DataTable dt = obj.FillNotasPorAlumno(idalumno);
+            if (dt != null)
+            {
+                var datos = (from DataRow dr in dt.Rows
+                             select new
+                             {
+                                 IdCurso = dr["IdCurso"],
+                                 Descripcion = dr["Descripcion"],
+                                 IdAlumno = dr["IdAlumno"],
+                                 Nota = dr["Nota"]
                              }).ToList();
                 return Json(new { Codigo = 0, Data = datos });
             }
